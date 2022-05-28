@@ -6,31 +6,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{title}}</title>
+    <title>Home</title>
     {% block styles%}
     {% bootstrap_css %}
     <link rel="stylesheet" href="../../static/css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Gabriela" rel="stylesheet">
     {% endblock %}
     <script src="../../static/js/masonry.pkgd.min.js"></script>
 </head>
 <body>
-    <div class="mainpage">
-        {% include "navbar.html" %}
-
-        <div class="form-container">
-            <form action="" role="search" class="form-inlin">
-            <input class="form-control" type="text" placeholder="Search For Images">
-                <a class="btn btn-info">Search</a>
-            </form>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img style="width: 100%;" alt="" class="mod-img">
+                    <p id="img-desc"></p>
+                    <p id="img-location"></p>
+                    <p id="img-category"></p>
+                </div>
+                <div class="modal-footer">
+                    <input name="" id="url-to-copy" style="position:relative;left:10000px">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="copyUrl()">Copy Url</button>
+                </div>
+            </div>
         </div>
-
     </div>
+    {% include "mainpage.html" %}
     <div class="container-fluid">
-        <h1 class="display-4 text-center">This Is La-Mia-Galleria</h1>
+        <h1 class="text-center">This Is La-Mia-Galleria</h1>
         <div class="row grid flex">
             {% for image in images%}
                 <div class="grid-item">
-                    <img class="image" src="{{image.image_url.url}}" alt="">
+                    <img onclick="showModal('{{image.name}}','{{image.description}}','{{image.image_url.url}}','{{image.place.name}}','{{image.category.name}}')" class="image" src="{{image.image_url.url}}">
                 </div>
             {% endfor %}
         </div>
@@ -54,6 +68,7 @@
 
         <script src="../../static/js/jquery-3.3.1.js"></script>
         <script src="../../static/js/navbar.js"></script>
+        <script src="../../static/js/modal.js"></script>
 
 
     {% endblock %}
