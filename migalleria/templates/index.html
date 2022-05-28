@@ -11,12 +11,15 @@
     {% bootstrap_css %}
     <link rel="stylesheet" href="../../static/css/index.css">
     {% endblock %}
-    {% block scripts%}
-        <script src="../../static/js/masonry.pkgd.min.js"></script>
-    {% endblock %}
+    <script src="../../static/js/masonry.pkgd.min.js"></script>
 </head>
 <body>
+    <div class="mainpage">
+        {% include "navbar.html" %}
+
+    </div>
     <div class="container-fluid">
+        <h1 class="display-4 text-center">This Is La-Mia-Galleria</h1>
         <div class="row grid flex">
             {% for image in images%}
                 <div class="grid-item">
@@ -25,19 +28,27 @@
             {% endfor %}
         </div>
     </div>
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
         <script>
             var elem = document.querySelector('.grid');
-            var msnry = new Masonry( elem, {
-            // options
-            itemSelector: '.grid-item',
-            columnWidth: 200
+            var msnry = new Masonry(elem, {
+                // options
+                itemSelector: '.grid-item',
+                columnWidth: 200
             });
-
             // element argument can be a selector string
             // for an individual element
-            var msnry = new Masonry( '.grid', {
+            var msnry = new Masonry('.grid', {
             // options
             })
         </script>
+
+        <script src="../../static/js/jquery-3.3.1.js"></script>
+        <script src="../../static/js/navbar.js"></script>
+
+
+    {% endblock %}
 </body>
 </html>

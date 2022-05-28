@@ -15,3 +15,25 @@
     width: 33.3333%;
     padding: 10px;
 }
+
+nav {
+    background: darkcyan;
+    margin-bottom: 15px;
+    border: none;
+}
+
+.mainpage {
+    background: url(../../media/images/earth-1756274_960_720.webp);
+    background-color: #101010;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+    background-attachment: fixed;
+}
+nav a {
+    color: white;
+}
+.navbar-brand {
+    color: white;
+}
