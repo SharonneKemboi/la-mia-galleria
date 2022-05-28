@@ -87,6 +87,10 @@ class Image(models.Model):
         return cls.objects.get(id = id)
 
     @classmethod
+    def get_images(cls):
+        return cls.objects.all()
+
+    @classmethod
     def search_image(cls,category):
         """
         This is the method to search images based on a specific category
