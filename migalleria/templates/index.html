@@ -1,4 +1,5 @@
 {% load bootstrap4%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{title}}</title>
+    {% block styles%}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="../../static/css/index.css">
+    {% endblock %}
+    {% block scripts%}
+        <script src="../../static/js/masonry.pkgd.min.js"></script>
+    {% endblock %}
 </head>
 <body>
-    {% for image in images%}
-        <img src="{{image.image_url.url}}" alt="">
-    {% endfor %}
+    <div class="container-fluid">
+        <div class="row grid flex">
+            {% for image in images%}
+                <div class="grid-item">
+                    <img class="image" src="{{image.image_url.url}}" alt="">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+        <script>
+            var elem = document.querySelector('.grid');
+            var msnry = new Masonry( elem, {
+            // options
+            itemSelector: '.grid-item',
+            columnWidth: 200
+            });
+
+            // element argument can be a selector string
+            // for an individual element
+            var msnry = new Masonry( '.grid', {
+            // options
+            })
+        </script>
 </body>
 </html>

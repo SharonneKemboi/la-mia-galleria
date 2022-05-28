@@ -26,6 +26,9 @@ class Place(models.Model):
         """
         Place.objects.get(id = self.id).update(field = val)
 
+    def __str__(self):
+        return self.name    
+
 
 class Category(models.Model):
     """
@@ -50,6 +53,9 @@ class Category(models.Model):
         This is the method to update the instance
         """
         Place.objects.get(id = self.id).update(field = val)
+
+    def __str__(self):
+        return self.name    
 
 class Image(models.Model):
     """
@@ -103,3 +109,6 @@ class Image(models.Model):
         This is the method to get images taken in a certain place
         """
         return cls.objects.filter(place = place)
+
+    def __str__(self):
+        return self.name    

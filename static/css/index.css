@@ -1,0 +1,17 @@
+* {
+    overflow-x: hidden
+}
+.image {
+    max-width: 100%;
+
+}
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.grid-item {
+    width: 33.3333%;
+    padding: 10px;
+}
