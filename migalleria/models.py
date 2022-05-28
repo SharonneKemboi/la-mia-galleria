@@ -18,7 +18,7 @@ class Place(models.Model):
         """
         This is the method to delete the instance
         """
-        Place.objects.get(id = self.id).delete()
+        self.delete()
 
     def update(self,field,val):
         """
@@ -36,7 +36,7 @@ class Category(models.Model):
     """
     name = models.CharField(max_length = 30)
 
-    def save_place(self):
+    def save_category(self):
         """
         This is the function that will save the instance of this class
         """
@@ -46,7 +46,7 @@ class Category(models.Model):
         """
         This is the method to delete the instance
         """
-        Place.objects.get(id = self.id).delete()
+        Category.objects.get(id = self.id).delete()
 
     def update(self,field,val):
         """
@@ -63,7 +63,7 @@ class Image(models.Model):
     """
     image_url = models.ImageField(upload_to = "images/")
     name = models.CharField(max_length = 30)
-    description = models.CharField(max_length = 40)
+    description = models.TextField()
     place = models.ForeignKey(Place,on_delete=models.CASCADE,)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,)
 
@@ -79,18 +79,18 @@ class Image(models.Model):
         """
         Image.objects.get(id = self.id).delete()
 
-    def update_image(self,field,val):
+    def update_image(self,val):
         """
         This is the method to update the instance
         """
-        Image.objects.get(id = self.id).update(field = val)
+        Image.objects.filter(id = self.id).update(name = val)
 
     @classmethod
-    def get_image_by_id(cls,id):
+    def get_image_by_id(cls,image_id):
         """
         This is the method to get a specific image
         """
-        return cls.objects.get(id = id)
+        return cls.objects.get(id = image_id)
 
     @classmethod
     def get_images(cls):
@@ -101,14 +101,25 @@ class Image(models.Model):
         """
         This is the method to search images based on a specific category
         """
-        return cls.objects.filter(category__icontains = category)
+       
+        searched_category = Category.objects.get(name  = category)
+
+        return cls.objects.filter(category_id = searched_category.id)
+
+        try:   
+            searched_category = Category.objects.filter(name__icontains  = category)[0]
+            return cls.objects.filter(category_id = searched_category.id)
+
+        except  Exception:
+            return "No images found"
 
     @classmethod
     def filter_by_place(cls,place):
         """
         This is the method to get images taken in a certain place
         """
-        return cls.objects.filter(place = place)
+        the_place = Place.objects.get(name = place)
+        return cls.objects.filter(place_id = the_place.id)
 
     def __str__(self):
         return self.name    
