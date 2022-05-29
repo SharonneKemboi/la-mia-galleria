@@ -2,6 +2,33 @@ from django.db import models
 
 # Create your models here.
 
+class Category(models.Model):
+    """
+    This is the class that will create categories
+    """
+    name = models.CharField(max_length = 30)
+
+    def save_category(self):
+        """
+        This is the function that will save the instance of this class
+        """
+        self.save()
+
+    def delete(self):
+        """
+        This is the method to delete the instance
+        """
+        Category.objects.get(id = self.id).delete()
+
+    def update(self,field,val):
+        """
+        This is the method to update the instance
+        """
+        Category.objects.get(id = self.id).update(field = val)
+
+    def __str__(self):
+        return self.name    
+
 class Place(models.Model):
     """
     This is the class that will create places
@@ -29,34 +56,6 @@ class Place(models.Model):
     def __str__(self):
         return self.name    
 
-
-class Category(models.Model):
-    """
-    This is the class that will create categories
-    """
-    name = models.CharField(max_length = 30)
-
-    def save_category(self):
-        """
-        This is the function that will save the instance of this class
-        """
-        self.save()
-
-    def delete(self):
-        """
-        This is the method to delete the instance
-        """
-        Category.objects.get(id = self.id).delete()
-
-    def update(self,field,val):
-        """
-        This is the method to update the instance
-        """
-        Place.objects.get(id = self.id).update(field = val)
-
-    def __str__(self):
-        return self.name    
-
 class Image(models.Model):
     """
     This is the class that will create images
@@ -64,7 +63,7 @@ class Image(models.Model):
     image_url = models.ImageField(upload_to = "images/")
     name = models.CharField(max_length = 30)
     description = models.TextField()
-    place = models.ForeignKey(Place,on_delete=models.CASCADE,)
+    place = models.ForeignKey(Place,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,)
 
     def save_image(self):
@@ -101,25 +100,25 @@ class Image(models.Model):
         """
         This is the method to search images based on a specific category
         """
-       
-        searched_category = Category.objects.get(name  = category)
-
-        return cls.objects.filter(category_id = searched_category.id)
-
         try:   
-            searched_category = Category.objects.filter(name__icontains  = category)[0]
-            return cls.objects.filter(category_id = searched_category.id)
+            my_category = Category.objects.filter(name__icontains  = category)[0]
+            return cls.objects.filter(category_id = my_category.id)
 
-        except  Exception:
+        except Exception:
             return "No images found"
-
+            
     @classmethod
     def filter_by_place(cls,place):
         """
         This is the method to get images taken in a certain place
         """
-        the_place = Place.objects.get(name = place)
-        return cls.objects.filter(place_id = the_place.id)
+        my_place = Place.objects.get(name = place)
+        return cls.objects.filter(place_id = my_place.id)
 
     def __str__(self):
         return self.name    
+
+
+
+
+
