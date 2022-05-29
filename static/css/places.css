@@ -1,0 +1,42 @@
+* {
+   
+    font-family: 'Gabriela';
+}
+
+body {
+    background: url(../../media/images/earth-1756274_960_720.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    background-attachment: fixed;
+    width: 100%;
+}
+
+
+nav {
+    background: #101010;
+    margin-bottom: 15px;
+    border: none;
+    transition: background 0.8s
+
+}
+.place {
+    max-height: 500px;
+}
+.place-img {
+    width: 100%;
+}
+#places .row1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+#places .row2 {
+    display: flex;
+    justify-content: space-around;
+}
+#places {
+    margin-top: 60px;
+
+}
