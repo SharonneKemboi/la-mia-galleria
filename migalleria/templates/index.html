@@ -1,5 +1,6 @@
 {% load bootstrap4%}
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
+
     {% block styles%}
     {% bootstrap_css %}
     <link rel="stylesheet" href="../../static/css/index.css">
     <link href="https://fonts.googleapis.com/css?family=Gabriela" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     {% endblock %}
+
     <script src="../../static/js/masonry.pkgd.min.js"></script>
+
 </head>
+
 <body>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -27,20 +33,20 @@
                 <div class="modal-body">
                     <img style="width: 100%;" alt="" class="mod-img">
                     <p id="img-desc"></p>
-                    <p id="img-location"></p>
+                    <p id="img-place"></p>
                     <p id="img-category"></p>
                 </div>
                 <div class="modal-footer">
-                    <input name="" id="url-to-copy" style="position:relative;left:10000px">
-                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="copyUrl()">Copy Url</button>
+                    <input name="" id="myurl" style="position:relative;left:10000px">
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success btn-sm" onclick="copyUrl()">Copy Url</button>
                 </div>
             </div>
         </div>
     </div>
     {% include "mainpage.html" %}
     <div class="container-fluid">
-        <h1 class="text-center">This Is La-Mia-Galleria</h1>
+        <h1 class="text-center text-light">This Is LaMia Galleria</h1>
         <div class="row grid flex">
             {% for image in images%}
                 <div class="grid-item">
@@ -49,28 +55,35 @@
             {% endfor %}
         </div>
     </div>
+    
+    {% include "footer.html" %}
+    
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {% bootstrap_javascript %}
+
         <script>
             var elem = document.querySelector('.grid');
             var msnry = new Masonry(elem, {
-                // options
+          
                 itemSelector: '.grid-item',
-                columnWidth: 200
+                columnWidth: 400
             });
-            // element argument can be a selector string
-            // for an individual element
+           
+       
             var msnry = new Masonry('.grid', {
-            // options
+          
             })
         </script>
 
-        <script src="../../static/js/jquery-3.3.1.js"></script>
         <script src="../../static/js/navbar.js"></script>
-        <script src="../../static/js/modal.js"></script>
+        <script src="../../static/js/lamia.js"></script>
+ 
+   
 
 
     {% endblock %}
+
+    
 </body>
 </html>
