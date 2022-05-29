@@ -1,0 +1,85 @@
+{% load bootstrap4%}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+
+    {% block styles%}
+    {% bootstrap_css %}
+
+    <link rel="stylesheet" href="../../static/css/search.css">
+    <link rel="stylesheet" href="../../static/css/index.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Gabriela" rel="stylesheet">
+    {% endblock %}
+
+    <script src="../../static/js/masonry.pkgd.min.js"></script>
+</head>
+
+<body>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <img style="width: 100%;" alt="" class="mod-img">
+                    <p id="img-desc"></p>
+                    <p id="img-place"></p>
+                    <p id="img-category"></p>
+                </div>
+                <div class="modal-footer">
+                    <input name="" id="myurl" style="position:relative;left:10000px">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="copyUrl()">Copy Url</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "navbar.html" %}
+    <div class="container-fluid">
+        <h1 class=" text-center">{{message}}</h1>
+    
+        <div class="row grid flex">
+            {% for image in images%}
+            <div class="grid-item">
+                <img onclick="showModal('{{image.name}}','{{image.description}}','{{image.image_url.url}}','{{image.place.name}}','{{image.category.name}}')" class="image" src="{{image.image_url.url}}">
+            </div>
+            {% empty%}
+              
+            {% endfor %}
+        </div>
+    </div>
+    {% block scripts %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
+    <script>
+        var elem = document.querySelector('.grid');
+        var msnry = new Masonry(elem, {
+      
+            itemSelector: '.grid-item',
+            columnWidth: 200
+        });
+
+      
+        var msnry = new Masonry('.grid', {
+        
+        })
+    </script>
+
+ 
+    <script src="../../static/js/lamia.js"></script>
+    {% endblock %}
+
+</body>
+
+</html>

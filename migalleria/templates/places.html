@@ -1,0 +1,51 @@
+{% load bootstrap4%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+
+    {% block styles%}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="../../static/css/places.css">
+        <link href="https://fonts.googleapis.com/css?family=Gabriela" rel="stylesheet">
+    {% endblock %}
+    
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div id="places">
+        <div class="row row1">
+            <div class="place col-sm-12 col-md-3">
+                <img class="place-img" src="../../media/images/russia.jpg" alt="">
+                <a href="{% url 'place' %}"><h3 class="text-center">Russia</h3></a>
+            </div>
+            <div class="place col-sm-12 col-md-3">
+                <img class="place-img" src="../../media/images/Rwanda.jpg" alt="">
+                <a href="{% url 'place'  %}"><h3 class="text-center">Rwanda</h3></a>
+            </div>
+            <div class="place col-sm-12 col-md-3">
+                <img class="place-img" src="../../media/images/korea.jpg" alt="">
+                <a href="{% url 'place'%}"><h3 class="text-center">Korea</h3></a>
+            </div>
+        </div>
+        <div class="row row2">
+            <div class="place col-sm-12 col-md-3">
+                <img class="place-img" src="../../media/images/kenya.jpg" alt="">
+                <a href="{% url 'place' %}"><h3 class="text-center">Kenya</h3></a>
+            </div>
+            <div class="place col-sm-12 col-md-3">
+                <img class="place-img" src="../../media/images/france-eiffel-tower.webp" alt="">
+                <a href="{% url 'place'  %}"><h3 class="text-center">France</h3></a>
+            </div>
+        </div>
+    </div>
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        {% bootstrap_javascript %}
+    {% endblock %}
+</body>
+</html> 
