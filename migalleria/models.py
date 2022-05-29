@@ -101,7 +101,7 @@ class Image(models.Model):
         This is the method to search images based on a specific category
         """
         try:   
-            my_category = Category.objects.filter(name__icontains  = category)[0]
+            my_category = Category.objects.filter(name= category)[0]
             return cls.objects.filter(category_id = my_category.id)
 
         except Exception:

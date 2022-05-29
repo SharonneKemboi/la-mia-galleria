@@ -1,0 +1,1 @@
+web: gunicorn lamia-galleria.wsgi --log-file -
