@@ -1,0 +1,11 @@
+<div class="mainpage">
+
+    {% include "navbar.html" %}
+    <div class="form-container">
+        <form action="{%url 'search'%}" role="search" class="back-form form-inline">
+            <input class="form-control" id="mainpage-form" name="term" type="text" placeholder="Search My Gallery ...">
+            <button id="search-btn" class="btn btn-info" type="submit">Search</button>
+        </form>
+        <p class="examples">Examples: Technology,Cars,Nature,country</p>
+    </div>
+</div>
