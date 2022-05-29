@@ -1,56 +1,130 @@
 * {
-    overflow-x: hidden
+    scroll-behavior: smooth;
+    font-family: 'Gabriela';
+    overflow-x: hidden;
+}
+
+body{
+    background-color: #101010;
+    background: url(../../media/images/Background.png);   
+}
+
+nav {
+    background: rgb(45, 2, 38);
+    margin-bottom: 2rem;
+    border: none;
+    transition: background 0.9s
+}
+
+.mainpage {
+    background: url(../../media/images/pexels-designecologist-1779487.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    background-attachment: fixed;
+}
+nav a {
+    color: white;
+    transition: background 0.7s;
+    
+   
+}
+nav
+
+.navbar-brand {
+    color: white;
+    font-size: 20px;
+}
+
+
+.form-container {
+    margin-left: 25%;
+    margin-top: 34%;
+}
+.back-form .form-control {
+    width: 60%;
+    height: 6vh;
+    display: inline-block;
+}
+
+@media (max-width: 900px) {
+    .grid-item {
+        width: 50%;
+    }
+    nav {
+        background-color: #101010;
+    }
+    .navbar-form {
+        display: block;
+    }
+    .back-form,.under {
+        display: none;
+    }
+  
+    
+}
+#search-btn {
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    display: inline-block;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: blueviolet;
+    border: #101010;
+}
+#mainpage-form {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+}
+.examples {
+    color: rgb(242, 248, 247);
+    margin: 0.9%;
+    font-size: 1.7rem;
+}   
+
+.navbar-right {
+    display: inline-block
+}
+
+.navbar-form {
+    display: none;
+    transition: display 0.9s
+}
+.navbar-form .form-control {
+    height: 4vh;
+}
+
+.modal-btn {
+    position: relative;
+    top: 50%;
+    left: 50%;
 }
 .image {
     max-width: 100%;
+    cursor: pointer;
 
 }
 
 .grid {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+   
 }
 .grid-item {
     width: 33.3333%;
-    padding: 10px;
+    padding: 2rem;
+    position: relative;
 }
 
-nav {
-    background: darkcyan;
-    margin-bottom: 15px;
-    border: none;
-}
-
-.mainpage {
-    background: url(../../media/images/earth-1756274_960_720.webp);
-    background-color: #101010;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 200px;
-    background-attachment: fixed;
-}
-nav a {
-    color: white;
-    transition: background 0.8s;
-    font-size: 27px;
-}
-.navbar-brand {
-    color: white;
-}
-
-.form-container {
-    margin-left: 28%;
-    margin-top: 4%;
-}
-form .form-control {
-    width: 60%;
-    height: 50px;
+i.fab {
     display: inline-block;
+    border-radius: 40px;
+    box-shadow: 2px 2px 2px;
+    padding: 0.2em 0.3em;
 }
-form a {
-    height: 50px;
-    display: flex;
-    align-items: center;
-}
+
+
