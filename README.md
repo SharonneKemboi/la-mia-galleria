@@ -66,7 +66,7 @@ $ sudo apt-get install postgresql postgresql-contrib libpq-dev
 * Heroku
 
 ### How To Access the Site
-> This App is being hosted by GitHub Pages. The link to the live site is: https://lamia-galleria.herokuapp.com/
+> This App is being hosted by Heroku. The link to the live site is: https://lamia-galleria.herokuapp.com/
 
 ### BDD
 | Input              | Output                     |
@@ -75,6 +75,7 @@ $ sudo apt-get install postgresql postgresql-contrib libpq-dev
 | Click copy Link button| Copy Link to Clipboard      |Alert message "Link Copied Successfully|
 | Search image in a certain category| View photos matching searched term|
 | Click Admin Dashboard| Login as Admin | Add Images, Categories, Different Places| 
+
 ## TDD
 
 > To test the app, run this command in the terminal;
