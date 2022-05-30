@@ -1,4 +1,4 @@
-# la-mia-galleria
+# Lamia Galleria
 
 
 ## By Sharonne Kemboi
