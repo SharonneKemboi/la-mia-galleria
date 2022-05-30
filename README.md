@@ -35,7 +35,7 @@ You must have git, django, postgres and python3.8+ installed in your pc.
 To install django and Postgres, you can use the following commands:
 
 ```
-#flask
+#django
 $ pip install django
 
 #postgres
