@@ -2,5 +2,4 @@ virtual/
 .vscode/
 *.pyc
 __pycache__
-settings.py
 .env
